@@ -11,11 +11,12 @@
 
 <ui:composition template="/templates/main.xhtml">
     <ui:define name="content">
-        @@ -17,9 +17,16 @@
         <h:form>
             <h:inputText value = "#{bookBean.term}"/>
             <h:commandButton value = "Search" action="#{bookBean.doSearch}"/>
-            <h:dataTable value="#{bookBean.books}" var="book">
+
+            <h:outputLabel value="Not found" rendered="#{empty bookBean.books}"/>
+            <h:dataTable value="#{bookBean.books}" var="book" rendered="#{not empty bookBean.books}">
                 <h:column>
                     <f:facet name="header">Id</f:facet>
                     #{book.id}
