@@ -1,37 +1,38 @@
 package lv.tsi.javacourses.bookshelf.books.boundary;
 
+
 import lv.tsi.javacourses.bookshelf.books.model.BookEntity;
 
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+import javax.persistence.PersistenceContexts;
 import java.io.Serializable;
-import java.util.List;
 
+@ViewScoped
 @Named
-@SessionScoped
 public class BookBean implements Serializable {
-    @PersistenceContext()
+    @PersistenceContext
     private EntityManager em;
-    private String term;
 
-    public String getTerm() {return term;}
+    private Long id;
+    private BookEntity book;
 
-    public void setTerm(String term) {this.term = term;}
-
-    public void doSearch() {
-        System.out.println("Searching");
+    public void openBook() {
+        System.out.println("Opening Book" + id);
+        book = em.find(BookEntity.class, id);
     }
 
-    public List<BookEntity> getBooks() {
-        if (term == null) {
-            return em.createQuery("select b from Book b", BookEntity.class).getResultList();
-        } else {
-            return em.createQuery("select b from Book b where lower(b.title) like :term", BookEntity.class)
-                    .setParameter("term", "%"+term.toLowerCase()+"%")
-                    .getResultList();
-        }
+    public BookEntity getBook() {
+        return book;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

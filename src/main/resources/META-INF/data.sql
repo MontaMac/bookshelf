@@ -7,3 +7,5 @@ insert into books(id, title, isbn, author, year, description) values (-2, 'title
 insert into books(id, title, isbn, author, year, description) values (-3, 'title3', 'isbn3', 'author3', 1903, 'description3')
 insert into books(id, title, isbn, author, year, description) values (-4, 'title4', 'isbn4', 'author4', 1904, 'description4')
 insert into books(id, title, isbn, author, year, description) values (-5, 'title5', 'isbn5', 'author5', 1905, 'description5')
+
+insert into reservations (id, user_id, book_id, status, created) values (-1, -1, -1, 'TAKEN', '2019-01-07')

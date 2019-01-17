@@ -18,7 +18,7 @@ public class BookReservationBean {
     @PersistenceContext
     private EntityManager em;
     @Inject
-    private CurrentUser currentUser;
+    public CurrentUser currentUser;
 
     public void reserve(Long id) {
         System.out.println("Trying to reserve a book" + id + " for user " + currentUser.getUser().getId());
@@ -28,6 +28,7 @@ public class BookReservationBean {
         reservation.setBook(book);
         reservation.setUser(currentUser.getUser());
         reservation.setStatus(ReservationStatus.ACTIVE);
+
         em.persist(reservation);
     }
 
