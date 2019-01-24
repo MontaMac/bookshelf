@@ -72,6 +72,19 @@
         </h:column>
     </h:dataTable>
 
+        <h2>Book history</h2>
+        <h:dataTable value="#{myBooksBean.historyBooks}"
+                     var="book">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{book.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Book Title</f:facet>
+                #{res.book.title}
+            </h:column>
+        </h:dataTable>
+
 
 </ui:define>
 </ui:composition>
